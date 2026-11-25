@@ -12,7 +12,7 @@ if (LINE.trim() !== LINE || LINE.includes("\n")) {
   throw new Error("entry must be a single line with no surrounding whitespace");
 }
 
-const outDir = join(process.cwd(), "output");
-mkdirSync(outDir, { recursive: true });
-writeFileSync(join(outDir, "entry.txt"), LINE + "\n", "utf8");
+const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? "/output";
+mkdirSync(OUTPUT_DIR, { recursive: true });
+writeFileSync(join(OUTPUT_DIR, "entry.txt"), LINE + "\n", "utf8");
 console.log(LINE);
